@@ -13,6 +13,7 @@
 		3CE7FE90243A0A7700710F3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CE7FE8E243A0A7700710F3D /* Main.storyboard */; };
 		3CE7FE92243A0A7900710F3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CE7FE91243A0A7900710F3D /* Assets.xcassets */; };
 		3CE7FE95243A0A7900710F3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CE7FE93243A0A7900710F3D /* LaunchScreen.storyboard */; };
+		3CE7FEA0243A1B5C00710F3D /* Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE7FE9F243A1B5C00710F3D /* Recorder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		3CE7FE91243A0A7900710F3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3CE7FE94243A0A7900710F3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3CE7FE96243A0A7900710F3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3CE7FE9F243A1B5C00710F3D /* Recorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recorder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +58,40 @@
 		3CE7FE87243A0A7700710F3D /* AVFoundation UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				3CE7FE88243A0A7700710F3D /* AppDelegate.swift */,
-				3CE7FE8A243A0A7700710F3D /* SceneDelegate.swift */,
-				3CE7FE8C243A0A7700710F3D /* ViewController.swift */,
-				3CE7FE8E243A0A7700710F3D /* Main.storyboard */,
+				3CE7FE9D243A1B0E00710F3D /* App Lifecycle */,
+				3CE7FE9C243A1B0300710F3D /* Controller */,
+				3CE7FE9E243A1B2800710F3D /* View */,
 				3CE7FE91243A0A7900710F3D /* Assets.xcassets */,
-				3CE7FE93243A0A7900710F3D /* LaunchScreen.storyboard */,
 				3CE7FE96243A0A7900710F3D /* Info.plist */,
 			);
 			path = "AVFoundation UIKit";
+			sourceTree = "<group>";
+		};
+		3CE7FE9C243A1B0300710F3D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3CE7FE8C243A0A7700710F3D /* ViewController.swift */,
+				3CE7FE9F243A1B5C00710F3D /* Recorder.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3CE7FE9D243A1B0E00710F3D /* App Lifecycle */ = {
+			isa = PBXGroup;
+			children = (
+				3CE7FE88243A0A7700710F3D /* AppDelegate.swift */,
+				3CE7FE8A243A0A7700710F3D /* SceneDelegate.swift */,
+			);
+			path = "App Lifecycle";
+			sourceTree = "<group>";
+		};
+		3CE7FE9E243A1B2800710F3D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3CE7FE8E243A0A7700710F3D /* Main.storyboard */,
+				3CE7FE93243A0A7900710F3D /* LaunchScreen.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +168,7 @@
 				3CE7FE8D243A0A7700710F3D /* ViewController.swift in Sources */,
 				3CE7FE89243A0A7700710F3D /* AppDelegate.swift in Sources */,
 				3CE7FE8B243A0A7700710F3D /* SceneDelegate.swift in Sources */,
+				3CE7FEA0243A1B5C00710F3D /* Recorder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
