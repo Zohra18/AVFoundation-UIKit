@@ -23,15 +23,19 @@ class ViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDe
     // MARK: - OUTLETS
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         playButton.layer.cornerRadius = 20
+        playButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        playButton.tintColor = .systemOrange
         recordButton.layer.cornerRadius = 20
+        recordButton.setImage(UIImage(systemName: "mic.fill"), for: .normal)
+        recordButton.tintColor = .systemOrange
         
         setupRecorder()
     }
-
+    
     
     // MARK: - RECORDER FUNCTION
     func setupRecorder() {
@@ -46,7 +50,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDe
                         AVEncoderBitRateKey : 32000,
                         AVNumberOfChannelsKey : 2,
                         AVSampleRateKey : 44100.0
-        ] as [String : Any]
+            ] as [String : Any]
         
         var error: NSError?
         
@@ -89,28 +93,31 @@ class ViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDe
     
     
     @IBAction func recordAudio(_ sender: UIButton) {
-        if sender.imageView?.image == UIImage(named: "mic.fill") {
+        if sender.imageView?.image == UIImage(systemName: "mic.fill") {
             audioRecorder.record()
-            sender.setImage(UIImage(named: "mic.slash.fill"), for: .normal)
+            sender.setImage(UIImage(systemName: "circle.fill"), for: .normal)
+            print("recording")
         } else {
             audioRecorder.stop()
-            sender.setImage(UIImage(named: "mic.fill"), for: .normal)
+            sender.setImage(UIImage(systemName: "mic.fill"), for: .normal)
+            print("recording ended")
         }
     }
     
     @IBAction func playAudio(_ sender: UIButton) {
-        if sender.imageView?.image == UIImage(named: "play.fill") {
+        if sender.imageView?.image == UIImage(systemName: "play.fill") {
             recordButton.isEnabled = false
-            sender.setImage(UIImage(named: "stop.fill"), for: .normal)
-                   preparePlayer()
+            sender.setImage(UIImage(systemName: "stop.fill"), for: .normal)
+            preparePlayer()
             audioPlayer.play()
-                   
-               } else {
-                   audioPlayer.stop()
-                   sender.setImage(UIImage(named: "play.fill"), for: .normal)
-               }
+            print("playing")
+        } else {
+            audioPlayer.stop()
+            sender.setImage(UIImage(systemName: "play.fill"), for: .normal)
+            print("playing ended")
+        }
     }
     
-
+    
 }
 

@@ -27,7 +27,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="mic.fill" catalog="system">
+                                        <state key="normal">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                         </state>
                                         <connections>
@@ -70,7 +70,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="mic.fill" catalog="system" width="54" height="64"/>
         <image name="play.fill" catalog="system" width="58" height="64"/>
     </resources>
 </document>
