@@ -34,6 +34,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDe
         recordButton.tintColor = .systemOrange
         
         setupRecorder()
+        playButton.isEnabled = false
     }
     
     
@@ -97,10 +98,12 @@ class ViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDe
             audioRecorder.record()
             sender.setImage(UIImage(systemName: "circle.fill"), for: .normal)
             print("recording")
+            playButton.isEnabled = false
         } else {
             audioRecorder.stop()
             sender.setImage(UIImage(systemName: "mic.fill"), for: .normal)
             print("recording ended")
+            playButton.isEnabled = true
         }
     }
     
@@ -113,6 +116,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDe
             print("playing")
         } else {
             audioPlayer.stop()
+            recordButton.isEnabled = true
             sender.setImage(UIImage(systemName: "play.fill"), for: .normal)
             print("playing ended")
         }

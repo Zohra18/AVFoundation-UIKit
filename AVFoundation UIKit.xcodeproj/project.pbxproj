@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C2A3C5B243C7A710045D40C /* RecordAudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A3C5A243C7A710045D40C /* RecordAudioViewController.swift */; };
 		3CE7FE89243A0A7700710F3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE7FE88243A0A7700710F3D /* AppDelegate.swift */; };
 		3CE7FE8B243A0A7700710F3D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE7FE8A243A0A7700710F3D /* SceneDelegate.swift */; };
 		3CE7FE8D243A0A7700710F3D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE7FE8C243A0A7700710F3D /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C2A3C5A243C7A710045D40C /* RecordAudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordAudioViewController.swift; sourceTree = "<group>"; };
 		3CE7FE85243A0A7700710F3D /* AVFoundation UIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AVFoundation UIKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CE7FE88243A0A7700710F3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3CE7FE8A243A0A7700710F3D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 			children = (
 				3CE7FE8C243A0A7700710F3D /* ViewController.swift */,
 				3CE7FE9F243A1B5C00710F3D /* Recorder.swift */,
+				3C2A3C5A243C7A710045D40C /* RecordAudioViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -166,6 +169,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CE7FE8D243A0A7700710F3D /* ViewController.swift in Sources */,
+				3C2A3C5B243C7A710045D40C /* RecordAudioViewController.swift in Sources */,
 				3CE7FE89243A0A7700710F3D /* AppDelegate.swift in Sources */,
 				3CE7FE8B243A0A7700710F3D /* SceneDelegate.swift in Sources */,
 				3CE7FEA0243A1B5C00710F3D /* Recorder.swift in Sources */,
