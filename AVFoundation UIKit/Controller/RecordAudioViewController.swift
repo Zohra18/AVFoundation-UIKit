@@ -9,30 +9,42 @@
 import UIKit
 import AVFoundation
 
-class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate {
+class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate, UITableViewDelegate, UITableViewDataSource {
+    
     
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
     
-    var numberOfRecords = 0
+    var numberOfRecords: Int = 0
     
     @IBOutlet weak var recordButton: UIButton!
+    @IBOutlet weak var tableView: UITableView!
     
+    // MARK: - ViewDiDLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Button design
         recordButton.setImage(UIImage(systemName: "mic.fill"), for: .normal)
         recordButton.tintColor = .systemOrange
         
+        // TV settup
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.reloadData()
+        
         // Setting up session
         recordingSession = AVAudioSession.sharedInstance()
+        
+        if let number: Int = UserDefaults.standard.object(forKey: "myNumber") as? Int {
+            numberOfRecords = number
+        }
         
         AVAudioSession.sharedInstance().requestRecordPermission { ( hasPermission ) in
             if hasPermission {
                 print("Accepted")
             }
         }
-    }
+    } // end of VDL
     
     //MARK: - Get path directory
     func getDirectory() -> URL {
@@ -75,10 +87,27 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate {
             // Stop recording
             audioRecorder.stop()
             audioRecorder = nil
+            
+            UserDefaults.standard.set(numberOfRecords, forKey: "myNumber")
+            
             recordButton.setImage(UIImage(systemName: "mic.fill"), for: .normal)
         }
         
     }
     
 
+    // MARK: - TableView Settup
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return numberOfRecords
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "audioCell", for: indexPath)
+            cell.textLabel?.text = String(indexPath.row + 1)
+            return cell
+//        } else {
+//            return UITableViewCell()
+//        }
+    }
+    
 } // end of VC
