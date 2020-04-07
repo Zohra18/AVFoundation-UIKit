@@ -25,7 +25,7 @@
                                             <constraint firstAttribute="width" constant="60" id="8CN-15-E7b"/>
                                             <constraint firstAttribute="height" constant="60" id="PtK-AU-E7x"/>
                                         </constraints>
-                                        <state key="normal" title="Rec">
+                                        <state key="normal">
                                             <color key="titleColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
@@ -44,9 +44,6 @@
                                         <state key="normal">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                         </state>
-                                        <connections>
-                                            <action selector="recordAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YBQ-PW-PvA"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AX8-t1-M3d">
                                         <rect key="frame" x="0.0" y="180" width="60" height="60"/>
@@ -59,9 +56,6 @@
                                         <state key="normal">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <connections>
-                                            <action selector="playAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e8r-OL-44o"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -81,7 +75,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="playButton" destination="AX8-t1-M3d" id="MqL-Fw-yh5"/>
                         <outlet property="recordButton" destination="JRd-qg-Y0F" id="jqI-Dc-Doe"/>
                     </connections>
                 </viewController>
