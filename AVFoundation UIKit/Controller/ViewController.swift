@@ -17,7 +17,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDe
     var audioRecorder: AVAudioRecorder!
     var audioPlayer: AVAudioPlayer!
     var recordingSession: AVAudioSession!
-    var fileName: String = ""
+    var fileName: String = "audioFile.m4a"
     
     
     // MARK: - OUTLETS
