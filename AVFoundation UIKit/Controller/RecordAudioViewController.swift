@@ -27,11 +27,6 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate, UITa
         recordButton.setImage(UIImage(systemName: "mic.fill"), for: .normal)
         recordButton.tintColor = .systemOrange
         
-        // TV settup
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.reloadData()
-        
         // Setting up session
         recordingSession = AVAudioSession.sharedInstance()
         
@@ -39,11 +34,17 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate, UITa
             numberOfRecords = number
         }
         
+        // Check for permission
         AVAudioSession.sharedInstance().requestRecordPermission { ( hasPermission ) in
             if hasPermission {
                 print("Accepted")
             }
         }
+        
+        // TV settup
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.reloadData()
     } // end of VDL
     
     //MARK: - Get path directory
@@ -89,6 +90,7 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate, UITa
             audioRecorder = nil
             
             UserDefaults.standard.set(numberOfRecords, forKey: "myNumber")
+            tableView.reloadData()
             
             recordButton.setImage(UIImage(systemName: "mic.fill"), for: .normal)
         }
@@ -102,12 +104,12 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate, UITa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "audioCell", for: indexPath)
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "audioCell", for: indexPath) as? AudioTableViewCell {
             cell.textLabel?.text = String(indexPath.row + 1)
             return cell
-//        } else {
-//            return UITableViewCell()
-//        }
+        } else {
+            return UITableViewCell()
+        }
     }
     
 } // end of VC
