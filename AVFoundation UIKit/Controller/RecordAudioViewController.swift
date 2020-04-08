@@ -14,6 +14,7 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate, UITa
     
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
+    var audioPlayer: AVAudioPlayer!
     
     var numberOfRecords: Int = 0
     
@@ -112,4 +113,15 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate, UITa
         }
     }
     
+    // Play audio for each cell selected
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let path = getDirectory().appendingPathComponent("\(indexPath.row + 1).m4a")
+        
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: path)
+            audioPlayer.play()
+        } catch {
+            displayAlert(title: "Woops!", message: "Couldn't play audio")
+        }
+    }
 } // end of VC
