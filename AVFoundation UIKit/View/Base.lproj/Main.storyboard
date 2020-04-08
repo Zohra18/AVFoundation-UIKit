@@ -89,7 +89,7 @@
                     <navigationItem key="navigationItem" title="Record" id="nNd-LV-8Tx">
                         <barButtonItem key="rightBarButtonItem" title="Playlist" id="5hK-9f-MNV">
                             <connections>
-                                <segue destination="OLA-Y1-MEM" kind="show" id="M3N-Qz-eFw"/>
+                                <segue destination="OLA-Y1-MEM" kind="show" identifier="pushAudio" id="M3N-Qz-eFw"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

@@ -87,16 +87,26 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate, UITa
             tableView.reloadData()
             
             recordButton.setImage(UIImage(systemName: "mic.fill"), for: .normal)
+            
+            performSegue(withIdentifier: "pushAudio", sender: nil)
         }
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let playlistVC = segue.destination as! PlaylistViewController
+        playlistVC.numbersOfAudioTracks = numberOfRecords
+    }
+    
+    
+    
+    
 
-    // MARK: - TableView Settup
+    // MARK: --- TableView Settup ---
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return numberOfRecords
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "audioCell", for: indexPath) as? AudioTableViewCell {
             cell.textLabel?.text = "AudioTrack # \(String(indexPath.row + 1))"
@@ -105,11 +115,11 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate, UITa
             return UITableViewCell()
         }
     }
-    
+
     // Play audio for each cell selected
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let path = getDirectory().appendingPathComponent("\(indexPath.row + 1).m4a")
-        
+
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: path)
             audioPlayer.play()
