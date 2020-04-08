@@ -17,6 +17,7 @@ class PlaylistTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         audioTrackImageView.image = UIImage(systemName: "music.note")
+        audioTrackImageView.tintColor = .systemOrange
         audioTrackLabel.textColor = .systemOrange
     }
 

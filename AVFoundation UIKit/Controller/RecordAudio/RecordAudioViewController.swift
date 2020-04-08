@@ -99,7 +99,7 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate, UITa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "audioCell", for: indexPath) as? AudioTableViewCell {
-            cell.textLabel?.text = String(indexPath.row + 1)
+            cell.textLabel?.text = "AudioTrack # \(String(indexPath.row + 1))"
             return cell
         } else {
             return UITableViewCell()
