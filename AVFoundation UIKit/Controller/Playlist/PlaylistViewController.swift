@@ -20,6 +20,10 @@ class PlaylistViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
         playlistTableView.delegate = self
         playlistTableView.dataSource = self
+        playlistTableView.reloadData()
+        playlistTableView.backgroundColor = UIColor(named: "darkTintColor")
+        
+        view.backgroundColor = UIColor(named: "bgColor")
 
     }
    
@@ -38,22 +42,33 @@ class PlaylistViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "audioTrackCell", for: indexPath) as? PlaylistTableViewCell {
-            cell.audioTrackLabel.text = "AudioTrack # \(indexPath.row + 1).m4a"
+            
+            // cell settings
+            cell.backgroundColor = UIColor(named: "bgColor")
+            cell.audioTrackLabel.text = "AudioTrack # \(indexPath.row + 1)"
+            
+            // creating a custom backgroundColor for a selected cell
+            let backgroundView = UIView()
+            backgroundView.backgroundColor = UIColor(named: "tintColor")
+            cell.selectedBackgroundView = backgroundView
+            
             return cell
         } else {
             return UITableViewCell()
         }
     }
     
+    // MARK: - Play audio on selection
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let path = getDirectory().appendingPathComponent("\(indexPath.row + 1).m4a")
         
         do {
-            audioPlayer = try AVAudioPlayer(contentsOf: path)
-            audioPlayer.play()
+                audioPlayer = try AVAudioPlayer(contentsOf: path)
+                audioPlayer.play()
         } catch {
             displayAlert(title: "Woops!", message: "Could not play AudioTrack # \(indexPath.row + 1)")
         }
     }
+    
     
 }

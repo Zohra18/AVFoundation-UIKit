@@ -70,6 +70,7 @@
 		3C2A3C68243DCCBF0045D40C /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				3CE7FE9F243A1B5C00710F3D /* Recorder.swift */,
 				3C2A3C66243DCCB70045D40C /* GetDirectory.swift */,
 			);
 			path = Settings;
@@ -107,7 +108,6 @@
 			isa = PBXGroup;
 			children = (
 				3CE7FE8C243A0A7700710F3D /* ViewController.swift */,
-				3CE7FE9F243A1B5C00710F3D /* Recorder.swift */,
 				3C2A3C68243DCCBF0045D40C /* Settings */,
 				3C2A3C65243DCB360045D40C /* RecordAudio */,
 				3C2A3C64243DCAED0045D40C /* Playlist */,

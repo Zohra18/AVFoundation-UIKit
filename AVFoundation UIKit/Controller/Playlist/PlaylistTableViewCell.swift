@@ -19,6 +19,7 @@ class PlaylistTableViewCell: UITableViewCell {
         audioTrackImageView.image = UIImage(systemName: "music.note")
         audioTrackImageView.tintColor = .systemOrange
         audioTrackLabel.textColor = .systemOrange
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -9,17 +9,16 @@
 import UIKit
 import AVFoundation
 
-class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate, UITableViewDelegate, UITableViewDataSource {
+class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate {
     
-    
+    // Audio settings
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
-    var audioPlayer: AVAudioPlayer!
     
     var numberOfRecords: Int = 0
     
+    // outlet
     @IBOutlet weak var recordButton: UIButton!
-    @IBOutlet weak var tableView: UITableView!
     
     // MARK: - ViewDiDLoad()
     override func viewDidLoad() {
@@ -27,6 +26,12 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate, UITa
         // Button design
         recordButton.setImage(UIImage(systemName: "mic.fill"), for: .normal)
         recordButton.tintColor = .systemOrange
+        recordButton.layer.cornerRadius = 40
+        view.backgroundColor = UIColor(named: "bgColor")
+        
+        // NavController settup
+        navigationController?.navigationBar.barTintColor = UIColor(named: "bgColor")
+        navigationController?.navigationBar.tintColor = .systemOrange
         
         // Setting up session
         recordingSession = AVAudioSession.sharedInstance()
@@ -41,11 +46,6 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate, UITa
                 print("Accepted")
             }
         }
-        
-        // TV settup
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.reloadData()
     } // end of VDL
     
     // MARK: - Display alert
@@ -84,48 +84,21 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate, UITa
             audioRecorder = nil
             
             UserDefaults.standard.set(numberOfRecords, forKey: "myNumber")
-            tableView.reloadData()
             
             recordButton.setImage(UIImage(systemName: "mic.fill"), for: .normal)
             
+            // send audio to playlistVC
             performSegue(withIdentifier: "pushAudio", sender: nil)
         }
         
     }
     
+    // MARK: - Prepare for segue
+    // prepare data to be send to PlaylistVC
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let playlistVC = segue.destination as! PlaylistViewController
         playlistVC.numbersOfAudioTracks = numberOfRecords
     }
     
-    
-    
-    
-
-    // MARK: --- TableView Settup ---
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return numberOfRecords
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "audioCell", for: indexPath) as? AudioTableViewCell {
-            cell.textLabel?.text = "AudioTrack # \(String(indexPath.row + 1))"
-            return cell
-        } else {
-            return UITableViewCell()
-        }
-    }
-
-    // Play audio for each cell selected
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let path = getDirectory().appendingPathComponent("\(indexPath.row + 1).m4a")
-
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: path)
-            audioPlayer.play()
-        } catch {
-            displayAlert(title: "Woops!", message: "Couldn't play audio")
-        }
-    }
 } // end of VC
 
