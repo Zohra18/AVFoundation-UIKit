@@ -48,13 +48,6 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate, UITa
         tableView.reloadData()
     } // end of VDL
     
-    //MARK: - Get path directory
-    func getDirectory() -> URL {
-        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        let documentDirectory = path[0]
-        return documentDirectory
-    }
-    
     // MARK: - Display alert
     func displayAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -72,7 +65,7 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate, UITa
                 AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
                 AVSampleRateKey: 12000,
                 AVNumberOfChannelsKey: 1,
-                AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
+                AVEncoderAudioQualityKey: AVAudioQuality.max.rawValue
             ]
             
             // Start recording
@@ -125,3 +118,4 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate, UITa
         }
     }
 } // end of VC
+
